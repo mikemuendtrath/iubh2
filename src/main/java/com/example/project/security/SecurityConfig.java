@@ -35,7 +35,7 @@ public class SecurityConfig {
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                .loginPage("/login")
+		                .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
 		                .permitAll())
             .logout(logout -> logout.permitAll())
