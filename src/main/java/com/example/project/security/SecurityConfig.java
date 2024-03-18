@@ -24,6 +24,7 @@ public class SecurityConfig {
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable();
         http.authorizeHttpRequests(configurer -> configurer       				
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/delete").hasRole("MANAGER")
@@ -34,10 +35,10 @@ public class SecurityConfig {
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
 			                        .anyRequest().authenticated())
-            // .formLogin(form -> form
-		    //             .loginPage("/index")
-		    //             .loginProcessingUrl("/authenticateTheUser")
-		    //             .permitAll())
+            .formLogin(form -> form
+		                .loginPage("/index")
+		                .loginProcessingUrl("/authenticateTheUser")
+		                .permitAll())
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
         return http.build();
