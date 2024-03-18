@@ -34,10 +34,10 @@ public class SecurityConfig {
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
 			                        .anyRequest().authenticated())
-            .formLogin(form -> form
-		                .loginPage("/index")
-		                .loginProcessingUrl("/authenticateTheUser")
-		                .permitAll())
+            // .formLogin(form -> form
+		    //             .loginPage("/index")
+		    //             .loginProcessingUrl("/authenticateTheUser")
+		    //             .permitAll())
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
         return http.build();
