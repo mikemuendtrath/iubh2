@@ -39,7 +39,7 @@ public class SecurityConfig{
 			                        // .anyRequest().authenticated()
                                     )
             .formLogin(form -> form
-		                .loginPage("/page/index.html")
+		                // .loginPage("/login")
 		                .loginProcessingUrl("/authenticateTheUser")
                         .permitAll()
                         .defaultSuccessUrl("/home",true)
