@@ -24,7 +24,7 @@ public class SecurityConfig{
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable();
+        // http.cors().and().csrf().disable();
          http.antMatcher("/**").permitAll().authorizeHttpRequests(configurer -> configurer	
                                     .antMatchers("/**","/index").permitAll()
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
