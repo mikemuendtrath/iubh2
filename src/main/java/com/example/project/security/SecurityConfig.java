@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvc
-public class SecurityConfig {
+public class SecurityConfig{
 		
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {   	
@@ -34,7 +34,7 @@ public class SecurityConfig {
 						            .requestMatchers("/aufgaben/save").hasAnyRole("ADMIN", "USER")
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
-			                        .antMatchers("/**").authenticated())
+			                        .anyRequest().authenticated())
             .formLogin(form -> form
 		                .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
