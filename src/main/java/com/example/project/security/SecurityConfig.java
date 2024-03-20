@@ -26,7 +26,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // http.cors().and().csrf().disable();
          http.authorizeHttpRequests(configurer -> configurer	
-                                    .requestMatchers("/home").permitAll()
+                                    // .requestMatchers("/home").permitAll()
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 					                .requestMatchers("/projekte/delete").hasRole("MANAGER")
 						            .requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")
@@ -42,7 +42,7 @@ public class SecurityConfig{
 		                // .loginPage("/login")
 		                .loginProcessingUrl("/authenticateTheUser")
                         .permitAll()
-                        .defaultSuccessUrl("/home",true)
+                        // .defaultSuccessUrl("/home",true)
 		                )
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
