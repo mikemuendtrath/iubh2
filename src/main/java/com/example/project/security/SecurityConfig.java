@@ -40,8 +40,8 @@ public class SecurityConfig{
                                     // .requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**","/**","/","/*").permitAll()  
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                // .loginPage("/index")
-		                // .loginProcessingUrl("/authenticateTheUser")
+		                .loginPage("/index")
+		                .loginProcessingUrl("/authenticateTheUser")
 		                .permitAll())
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
