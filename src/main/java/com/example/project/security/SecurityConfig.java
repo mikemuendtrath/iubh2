@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvc
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 		
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {   	
