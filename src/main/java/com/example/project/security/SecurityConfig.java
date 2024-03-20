@@ -29,10 +29,8 @@ public class SecurityConfig {
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
 		                .loginPage("/index")
-		                .loginProcessingUrl("/authenticateTheUser")
-		                .permitAll())
-            .logout(logout -> logout.permitAll())
-            .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
+		            )
+            
         // http.authorizeHttpRequests(configurer -> configurer       				
 		// 				            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 		// 				            .requestMatchers("/projekte/delete").hasRole("MANAGER")
