@@ -41,7 +41,7 @@ public class SecurityConfig{
 		                .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
                         .permitAll()
-                        // .defaultSuccessUrl("/",true)
+                        .defaultSuccessUrl("/home",true)
 		                )
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
