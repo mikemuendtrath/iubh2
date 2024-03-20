@@ -28,8 +28,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(configurer -> configurer       				
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                .loginPage("/index")
-		            )
+		                .permitAll())
             
         // http.authorizeHttpRequests(configurer -> configurer       				
 		// 				            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
