@@ -35,7 +35,7 @@ public class SecurityConfig{
 						            .requestMatchers("/aufgaben/save").hasAnyRole("ADMIN", "USER")
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
-                                    .requestMatchers("/**").permitAll()  
+                                    // .requestMatchers("/**").permitAll()  
 			                        .anyRequest().authenticated()
                                     )
             .formLogin(form -> form
