@@ -40,7 +40,8 @@ public class SecurityConfig{
             .formLogin(form -> form
 		                .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
-                        .defaultSuccessUrl("/",true)
+                        .permitAll()
+                        // .defaultSuccessUrl("/",true)
 		                )
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
