@@ -35,7 +35,9 @@ public class SecurityConfig{
 						            .requestMatchers("/aufgaben/save").hasAnyRole("ADMIN", "USER")
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
-                                    .requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**","/**","/","/*").permitAll()  
+                                    .requestMatchers("/index").permitAll()
+                                    .requestMatchers("/login").permitAll()  
+                                    // .requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**","/**","/","/*").permitAll()  
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
 		                // .loginPage("/index")
