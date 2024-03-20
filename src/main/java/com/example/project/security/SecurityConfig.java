@@ -26,7 +26,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // http.cors().and().csrf().disable();
          http.authorizeHttpRequests(configurer -> configurer	
-                                    .requestMatchers("/index**","/authenticateTheUser").permitAll()
+                                    .requestMatchers("/**").permitAll()
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 					                .requestMatchers("/projekte/delete").hasRole("MANAGER")
 						            .requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")
