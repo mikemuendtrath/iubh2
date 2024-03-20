@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
-         http.antMatcher("/**").authorizeHttpRequests(configurer -> configurer       				
+         http.authorizeHttpRequests(configurer -> configurer       				
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/delete").hasRole("MANAGER")
 						            .requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						            .requestMatchers("/aufgaben/save").hasAnyRole("ADMIN", "USER")
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
-			                        .anyRequest().authenticated())
+			                        .antMatchers("/**").authenticated())
             .formLogin(form -> form
 		                .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
