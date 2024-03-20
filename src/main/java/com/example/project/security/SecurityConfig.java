@@ -35,14 +35,13 @@ public class SecurityConfig{
 						            .requestMatchers("/aufgaben/save").hasAnyRole("ADMIN", "USER")
 						            .requestMatchers("/aufgaben/delete").hasRole("ADMIN")
 						            .requestMatchers("/aufgaben/update").hasAnyRole("ADMIN", "USER")
-                                    .requestMatchers("/index").permitAll()
-                                    .requestMatchers("/login").permitAll()  
                                     // .requestMatchers("/images/**", "/css/**", "/js/**", "/WEB-INF/views/**","/**","/","/*").permitAll()  
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                .loginPage("/index")
+        
+		                .loginPage("/index").permitAll()
 		                .loginProcessingUrl("/authenticateTheUser")
-		                .permitAll())
+		                )
             .logout(logout -> logout.permitAll())
             .exceptionHandling(configurer -> configurer.accessDeniedPage("/error"));
             
