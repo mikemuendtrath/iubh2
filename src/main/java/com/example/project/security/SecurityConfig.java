@@ -38,8 +38,8 @@ public class SecurityConfig{
                                     // .requestMatchers("/**").permitAll()  
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                .loginPage("/index").permitAll()
-		                .loginProcessingUrl("/authenticateTheUser")
+		                // .loginPage("/index").permitAll()
+		                // .loginProcessingUrl("/authenticateTheUser")
                         .defaultSuccessUrl("/",true)
 		                )
             .logout(logout -> logout.permitAll())
