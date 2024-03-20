@@ -38,7 +38,7 @@ public class SecurityConfig{
                                     // .requestMatchers("/**").permitAll()  
 			                        .anyRequest().authenticated())
             .formLogin(form -> form
-		                .loginPage("/index")
+		                // .loginPage("/index")
 		                .loginProcessingUrl("/authenticateTheUser")
                         .defaultSuccessUrl("/",true)
 		                )
