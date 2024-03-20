@@ -27,6 +27,7 @@ public class SecurityConfig{
         http.cors().and().csrf().disable();
          http.authorizeHttpRequests(configurer -> configurer	
                                     .antMatcher("/**").permitAll()
+                                    .antMatchers("/**","/index").permitAll()
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/delete").hasRole("MANAGER")
 						            .requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")
