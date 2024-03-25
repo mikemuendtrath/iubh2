@@ -146,11 +146,11 @@
 	                </button>
 	                <h3>Verfügbare Projekte</h3>
 	            </div>	            
-                <!-- <a th:if="${#authorization.expression('hasAnyRole(''MANAGER'')')}" th:href="@{/projekte/anlegen}" class="btn btn-info btn-sm" id="anlegen-button">
+                <a th:if="${#authorization.expression('hasAnyRole(''MANAGER'')')}" th:href="@{/projekte/anlegen}" class="btn btn-info btn-sm" id="anlegen-button">
 	                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
 	                	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 	                </svg>Neues Projekt erstellen
-	            </a>	           -->
+	            </a>	          
 	        </div>	
 	        <hr>	
 	        <table class="table table-bordered table-striped">
@@ -178,13 +178,13 @@
 	                    <td th:text="${tempProjkt.ersteller}" />
 	                    <td th:text="${tempProjkt.projektleiter}" />
 	                    <td>
-	                        <!-- <a th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''MANAGER'')')}"
+	                        <a th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''MANAGER'')')}"
 	                           th:href="@{/projekte/update(projektId=${tempProjkt.projektid})}" class="btn btn-info btn-sm ">Bearbeiten
-	                        </a> -->
-	                        <!-- <a th:if="${#authorization.expression('hasRole(''MANAGER'')')}"
+	                        </a>
+	                        <a th:if="${#authorization.expression('hasRole(''MANAGER'')')}"
 	                        	th:href="@{/projekte/delete(projektid=${tempProjkt.projektid})}" class="btn btn-danger btn-sm"
 	                            onclick="if (!(confirm('are you sure want to delete this projekt?'))) return false">Löschen
-	                        </a> -->
+	                        </a>
 	                    </td>
 	                </tr>
 	            </tbody>
