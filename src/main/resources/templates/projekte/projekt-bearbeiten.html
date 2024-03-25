@@ -231,11 +231,10 @@
 	            </div>	            
 	            <div style="margin-top: 10px;" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
 		            <label for="mitarbeiter">Mitarbeiter auswählen:</label>
-		            <select th:field="*{mitarbeiter}" id="mitarbeiter" name="mitarbeiter" multiple="multiple">
-		                <option th:each="tempMitarbeiter : ${mitarbeiter}" th:value="${tempMitarbeiter.id}" th:text="${tempMitarbeiter.user}"><input type="checkbox" name="option1" checked="checked" /></option>                     
+		            <select th:field="*{mitarbeiter}" id="mitarbeiter" name="mitarbeiter" multiple required>
+		                <option th:each="tempMitarbeiter : ${mitarbeiter}" th:value="${tempMitarbeiter.id}" th:text="${tempMitarbeiter.user}"></option>                     
 		            </select>
 				</div>
-				
 				<div style="margin-top: 10px;" th:if="!${#authorization.expression('hasRole(''ADMIN'')')}">
 		            <input type="hidden" th:field="*{mitarbeiter}">
 				</div>					
