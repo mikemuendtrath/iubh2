@@ -31,7 +31,6 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
         	.authorizeHttpRequests(configurer -> configurer 
-                                    .requestMatchers("/mitarbeiter").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/delete").hasRole("MANAGER")
         							.requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")

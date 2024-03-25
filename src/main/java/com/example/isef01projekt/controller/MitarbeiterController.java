@@ -23,7 +23,7 @@ public class MitarbeiterController {
         this.mitarbeiterService = mitarbeiterService;
     }
 
-    @GetMapping
+    @GetMapping({"","/"})
     public String getMitarbeiter(Model theModel) {
         List<Mitarbeiter> meineMitarbeiter = mitarbeiterService.findAll();
         theModel.addAttribute("Mitarbeiter", meineMitarbeiter);
