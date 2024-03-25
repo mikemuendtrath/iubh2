@@ -1,6 +1,5 @@
 package com.example.project.service;
 
-import com.example.project.entity.Mitarbeiter;
 import com.example.project.entity.Projekt;
 
 import java.util.List;

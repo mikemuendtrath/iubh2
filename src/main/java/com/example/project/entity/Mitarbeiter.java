@@ -1,10 +1,9 @@
 package com.example.project.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "mitarbeiter")
@@ -14,7 +13,7 @@ public class Mitarbeiter {
     // define fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="mitarbeiterid")
     private long id;
 
     @Column(name="firstname")
@@ -35,12 +34,15 @@ public class Mitarbeiter {
 
     @Column(name="user")
     private String user;
+    
+    @ManyToMany(mappedBy = "mitarbeiter")
+    private List<Projekt> projekt;
 
     public Mitarbeiter (){
 
     }
 
-    public Mitarbeiter(long id, String firstName, String lastName, Date geburtstag, String rolle, String faehigkeiten, String user) {
+    public Mitarbeiter(long id, String firstName, String lastName, Date geburtstag, String rolle, String faehigkeiten, String user, List<Projekt> projekt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,6 +50,7 @@ public class Mitarbeiter {
         this.rolle = rolle;
         this.faehigkeiten = faehigkeiten;
         this.user = user;
+        this.projekt = projekt;
     }
 
     public long getId() {
@@ -105,17 +108,12 @@ public class Mitarbeiter {
     public void setUser(String user) {
         this.user = user;
     }
+    
+    public List<Projekt> getProjekt() {
+		return projekt;
+	}
 
-    @Override
-    public String toString() {
-        return "Mitarbeiter{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", geburtstag=" + geburtstag +
-                ", rolle='" + rolle + '\'' +
-                ", faehigkeiten='" + faehigkeiten + '\'' +
-                ", user='" + user + '\'' +
-                '}';
-    }
+	public void setProjekt(List<Projekt> projekt) {
+		this.projekt = projekt;
+	}
 }

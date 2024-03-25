@@ -9,6 +9,10 @@ public class Aufgabe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
+    
+    @ManyToOne
+	@JoinColumn(name="projektid")
+    private Projekt projektid;
 
     @Column(name="titel")
     private String titel;
@@ -27,19 +31,25 @@ public class Aufgabe {
 
     @Column(name="projektleiter")
     private String projektleiter;
+    
+    @Column(name="bericht")
+    private String bericht;
 
     public Aufgabe() {
-
     }
 
-    public Aufgabe(int id, String titel, String beschreibung, String status, String deadline, String mitarbeiter, String projektleiter) {
+    public Aufgabe(int id, String titel, Projekt projektid, 
+    			   String beschreibung, String status, String deadline, 
+    			   String mitarbeiter, String projektleiter, String bericht) {
         this.id = id;
+        this.projektid = projektid;
         this.titel = titel;
         this.beschreibung = beschreibung;
         this.status = status;
         this.deadline = deadline;
         this.mitarbeiter = mitarbeiter;
         this.projektleiter = projektleiter;
+        this.bericht = bericht;
     }
 
     public int getId() {
@@ -48,9 +58,17 @@ public class Aufgabe {
 
     public void setId(int id) {
         this.id = id;
-    }
+    }    
 
-    public String getTitel() {
+    public Projekt getProjektid() {
+		return projektid;
+	}
+
+	public void setProjektid(Projekt projektid) {
+		this.projektid = projektid;
+	}
+
+	public String getTitel() {
         return titel;
     }
 
@@ -98,16 +116,12 @@ public class Aufgabe {
         this.projektleiter = projektleiter;
     }
 
-    @Override
-    public String toString() {
-        return "Aufgabe{" +
-                "id=" + id +
-                ", titel='" + titel + '\'' +
-                ", beschreibung='" + beschreibung + '\'' +
-                ", status='" + status + '\'' +
-                ", deadline='" + deadline + '\'' +
-                ", mitarbeiter='" + mitarbeiter + '\'' +
-                ", projektleiter='" + projektleiter + '\'' +
-                '}';
-    }
+	public String getBericht() {
+		return bericht;
+	}
+
+	public void setBericht(String bericht) {
+		this.bericht = bericht;
+	}	
+    
 }

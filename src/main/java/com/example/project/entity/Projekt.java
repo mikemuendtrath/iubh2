@@ -1,20 +1,20 @@
 package com.example.project.entity;
 
-import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.List;
 
-import java.util.Date;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "projekte")
 public class Projekt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="projektid")
+    private int projektid;
 
     @Column(name="projektname")
-    private String projektName;
+    private String projektname;
 
     @Column(name="erstelldatum")
     private String erstellDatum;
@@ -34,36 +34,43 @@ public class Projekt {
 
     @Column(name="projektleiter")
     private String projektleiter;
+    
+    @ManyToMany
+    @JoinTable(
+	  name = "projekt_mitarbeiter", 
+	  joinColumns = @JoinColumn(name = "projektid"), 
+	  inverseJoinColumns = @JoinColumn(name = "mitarbeiterid"))
+    private List<Mitarbeiter> mitarbeiter;
 
     public Projekt() {
-
     }
 
-    public Projekt(int id, String projektName, String erstellDatum, String status, String beschreibung, String deadline, String ersteller, String projektleiter) {
-        this.id = id;
-        this.projektName = projektName;
+    public Projekt(int id, String projektName, String erstellDatum, String status, String beschreibung, String deadline, String ersteller, String projektleiter, List<Mitarbeiter> mitarbeiter) {
+        this.projektid = id;
+        this.projektname = projektName;
         this.erstellDatum = erstellDatum;
         this.status = status;
         this.beschreibung = beschreibung;
         this.deadline = deadline;
         this.ersteller = ersteller;
         this.projektleiter = projektleiter;
+        this.mitarbeiter = mitarbeiter;
     }
 
-    public int getId() {
-        return id;
+    public int getProjektid() {
+        return projektid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProjektid(int projektid) {
+        this.projektid = projektid;
     }
 
-    public String getProjektName() {
-        return projektName;
+    public String getProjektname() {
+        return projektname;
     }
 
-    public void setProjektName(String projektName) {
-        this.projektName = projektName;
+    public void setProjektname(String projektname) {
+        this.projektname = projektname;
     }
 
     public String getErstellDatum() {
@@ -113,18 +120,12 @@ public class Projekt {
     public void setProjektleiter(String projektleiter) {
         this.projektleiter = projektleiter;
     }
+    
+    public List<Mitarbeiter> getMitarbeiter() {
+		return mitarbeiter;
+	}
 
-    @Override
-    public String toString() {
-        return "Projekt{" +
-                "id=" + id +
-                ", projektName='" + projektName + '\'' +
-                ", erstellDatum=" + erstellDatum +
-                ", status='" + status + '\'' +
-                ", beschreibung='" + beschreibung + '\'' +
-                ", deadline=" + deadline +
-                ", ersteller='" + ersteller + '\'' +
-                ", projektleiter='" + projektleiter + '\'' +
-                '}';
-    }
+	public void setMitarbeiter(List<Mitarbeiter> mitarbeiter) {
+		this.mitarbeiter = mitarbeiter;
+	}
 }
