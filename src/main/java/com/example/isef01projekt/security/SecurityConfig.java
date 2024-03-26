@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableWebMvc
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
@@ -31,6 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
         	.authorizeHttpRequests(configurer -> configurer 
+        							.requestMatchers("/projekte").hasAnyRole("MANAGER", "ADMIN", "USER")
 						            .requestMatchers("/projekte/save").hasAnyRole("MANAGER", "ADMIN")
 						            .requestMatchers("/projekte/delete").hasRole("MANAGER")
         							.requestMatchers("/projekte/update").hasAnyRole("MANAGER", "ADMIN")
